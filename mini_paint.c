@@ -18,12 +18,12 @@ int main(void)
     float brushSize = 10.0f;
     bool erasing = false;
 
-    // Initial canvas
+
     BeginTextureMode(canvas);
     ClearBackground(RAYWHITE);
     EndTextureMode();
 
-    // UI Buttons Rect
+
     Rectangle btnRed = {10, 10, 60, 30};
     Rectangle btnGreen = {80, 10, 60, 30};
     Rectangle btnBlue = {150, 10, 60, 30};
@@ -38,7 +38,7 @@ int main(void)
     {
         Vector2 mouse = GetMousePosition();
 
-        // UI interactions
+
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
             if (CheckCollisionPointRec(mouse, btnRed)) currentColor = RED, erasing = false;
@@ -77,7 +77,7 @@ int main(void)
             }
         }
 
-        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON) && mouse.y > 50) // Drawing Area Only
+        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON) && mouse.y > 50) 
         {
             BeginTextureMode(canvas);
             DrawCircleV(mouse, brushSize, erasing ? RAYWHITE : currentColor);
@@ -87,10 +87,9 @@ int main(void)
         BeginDrawing();
         ClearBackground(LIGHTGRAY);
 
-        // Draw Canvas
         DrawTextureRec(canvas.texture, (Rectangle){0, 0, (float)canvas.texture.width, -(float)canvas.texture.height}, (Vector2){0, 0}, WHITE);
 
-        // Draw UI Buttons
+
         DrawRectangleRec(btnRed, RED);
         DrawText("Red", btnRed.x + 10, btnRed.y + 7, 10, WHITE);
 
@@ -126,3 +125,4 @@ int main(void)
     CloseWindow();
     return 0;
 }
+
